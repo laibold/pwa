@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progressive Web App</title>
+    <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/htmx.org@2.0.3"></script>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+    <script src="script.js"></script>
+    <link rel="icon" href="/public/favicon.ico">
+</head>
+
+<body>
+
+<nav class="container-fluid" id="header-container">
+    <ul>
+        <li><strong>Progressive Web App</strong></li>
+    </ul>
+    <ul>
+        <li><a href="#definition">Definition</a></li>
+        <li><a href="#fugu">Project Fugu</a></li>
+        <li><a href="#">Products</a></li>
+    </ul>
+</nav>
+
+<h1 class="container">Die Progressive Web App.</h1>
+
+<section class="container">
+    <h2 id="definition">Definition</h2>
+    <p>Irgendwas zwischen</p>
+    <ul>
+        <li>Website, mit Merkmalen, die bislang nativen Apps vorbehalten waren.</li>
+        <li>Software, die mit Webtechnologien gebaut wurde</li>
+    </ul>
+
+    <blockquote>
+        „Progressive Web Apps sind <strong>responsive</strong> und per <strong>HTTPS</strong> übertragene
+        Webanwendungen,
+        die nach dem Grundsatz des Progressive Enhancement die Fähigkeiten der Browser [...] nutzen, wodurch mittels
+        <strong>Offlinefunktionalität</strong> über Service Worker, eine <strong>Installation</strong> anhand eines Web
+        App Manifests und
+        <strong>Push Notifications</strong> eine zuverlässige, motivierende und <strong>native Nutzererfahrung</strong>
+        gewährleistet wird.“
+        <footer>
+            <cite>
+                <a href="https://kfrank-vfh.github.io/#intro">- Kevin Frank</a>
+            </cite>
+        </footer>
+    </blockquote>
+</section>
+
+<section class="container">
+    <h3>Minimale Anforderungen</h3>
+    <ul>
+        <li>Website, mit Merkmalen, die bislang nativen Apps vorbehalten waren.</li>
+        <li>Software, die mit Webtechnologien gebaut wurde</li>
+    </ul>
+</section>
+
+<section class="container">
+    <h2 id="fugu">Project Fugu</h2>
+    <p>Bla</p>
+</section>
+
+<section class="container">
+    <h2 id="apis">APIs</h2>
+    <h3>Badge</h3>
+    <button onclick="increase()">navigator.setAppBadge()</button>
+
+    <section class="container">
+        <h3>Notification</h3>
+
+        <section class="container-fluid">
+            <button onclick="requestNotificationPermission()">Berechtigung anfragen</button>
+
+            <h4>Aus dem Client</h4>
+            <button onclick="showNotificationViaServiceWorker()">registration.showNotification</button>
+
+            <h4>Push (von Server aus)</h4>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Tutorials/js13kGames/Re-engageable_Notifications_Push#push_example">
+                Geht auch
+            </a>
+        </section>
+    </section>
+</section>
+
+</body>
+</html>

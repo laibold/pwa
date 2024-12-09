@@ -1,0 +1,21 @@
+* {
+    scroll-behavior: smooth;
+}
+
+section {
+    padding: 1rem 0;
+}
+
+nav {
+    padding: 0 7rem;
+    margin-bottom: 2rem;
+    background-color: var(--pico-secondary-background);
+}
+
+h3 {
+    margin-top: 1rem !important;
+}
+
+h4 {
+    margin-top: 1rem !important;
+}
