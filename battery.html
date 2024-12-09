@@ -15,7 +15,7 @@
     <link rel="icon" href="/public/favicon.ico">
 
     <script>
-        if (navigator.getBattery) {
+        if ("getBattery" in navigator) {
             navigator.getBattery().then((battery) => {
                 const updateBatteryStatus = () => {
                     console.log(JSON.stringify(battery))

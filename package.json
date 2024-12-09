@@ -1,5 +1,9 @@
 {
   "scripts": {
-    "start": "http-server . -p 8081 --mimetypes '{ \"application/manifest+json\": [\"json\"] }'"
+    "start": "http-server . -p 8081 --mimetypes '{ \"application/manifest+json\": [\"json\"] }'",
+    "deploy": "gcloud app deploy"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
   }
 }
