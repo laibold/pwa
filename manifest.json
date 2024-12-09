@@ -1,11 +1,10 @@
-
 {
-  "name": "Example PWA",
-  "short_name": "ExPWA",
-  "start_url": "index.html",
+  "name": "Example PWA - learn about PWAs",
+  "short_name": "Example PWA",
+  "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
+  "background_color": "grey",
+  "theme_color": "grey",
   "icons": [
     {
       "src": "public/icon-192x192.png",
@@ -21,14 +20,43 @@
   "shortcuts": [
     {
       "name": "APIs anzeigen",
-      "url": "/index.html#apis",
+      "description": "APIs in der App anzeigen",
+      "url": "index.html#apis",
       "icons": [
         {
           "src": "public/shortcut-icon-96x96.png",
           "sizes": "96x96",
-          "type": "image/png"
+          "type": "image/png",
+          "purpose": "any"
         }
       ]
+    },
+    {
+      "name": "Akkustand anzeigen",
+      "description": "Akkustand in der App anzeigen",
+      "url": "/battery.html",
+      "icons": [
+        {
+          "src": "public/shortcut-icon-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png",
+          "purpose": "any"
+        }
+      ]
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "/image.html",
+      "accept": {
+        "image/jpeg": [
+          ".jpg",
+          ".jpeg"
+        ],
+        "image/png": [
+          ".png"
+        ]
+      }
     }
   ]
 }

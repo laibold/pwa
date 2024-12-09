@@ -7,7 +7,6 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/htmx.org@2.0.3"></script>
     <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
@@ -55,32 +54,75 @@
     </blockquote>
 </section>
 
+<hr/>
+
 <section class="container">
     <h3>Minimale Anforderungen</h3>
     <ul>
-        <li>Website, mit Merkmalen, die bislang nativen Apps vorbehalten waren.</li>
-        <li>Software, die mit Webtechnologien gebaut wurde</li>
+        <li>Manifest</li>
+        <li>Service Worker
+            <pre class="minWidth"><code>navigator.serviceWorker.register('service-worker.js')</code></pre>
+        </li>
     </ul>
+
+    <img src="https://www.thinktecture.com/storage/2020/03/service-worker-principle-768x439.png"/>
 </section>
 
+<hr/>
+
 <section class="container">
-    <h2 id="fugu">Project Fugu</h2>
-    <p>Bla</p>
+    <h3>Manifest</h3>
+    <pre class="minWidth"><code>&lt;link rel="manifest" href="manifest.json"&gt;`</code></pre>
+    <a href="manifest.json" target="_blank">Link</a>
 </section>
+
+<hr/>
+
+<section class="container">
+    <h2 id="fugu">Project Fugu 🐡</h2>
+    <p>
+        Auch Web Capabilities Project genannt: Teil des Chromium-Projekts, mit dem Lücken zwischen nativen Anwendungen und
+        Webanwendungen geschlossen werden soll. Zu den aktuellen Teilnehmern gehören u.a. Google, Microsoft, Intel, Samsung.
+    </p>
+    <h3>Umgesetzte APIs</h3>
+    <ul>
+        <li><strong>File System Access API:</strong> Zugriff auf lokale Dateien</li>
+        <li><strong>Web Share API:</strong> Teilen von Inhalten</li>
+        <li><strong>Badging API:</strong> Anzeigen von Benachrichtigens-Badges</li>
+        <li><strong>Web Bluetooth API:</strong> Interaktion mit dem IoT-Standard Bluetooth LE</li>
+        <li><strong>Web Serial API:</strong> Kommunikation mit seriellen Schnittstellen</li>
+    </ul>
+
+    <h3>APIs in Arbeit</h3>
+    <ul>
+        <li><strong>Contact Picker API:</strong> Zugriff auf Kontaktliste</li>
+        <li><strong>Web NFC:</strong> Datenaustausch über NFC</li>
+        <li><strong>AmbientLightSensor:</strong> Zugriff auf den Helligkeitssensor</li>
+    </ul>
+
+    <p>Was kann mein Browser schon? <a href="https://whatwebcando.today/" target="_blank">whatwebcando.today</a></p>
+
+</section>
+
+<hr/>
 
 <section class="container">
     <h2 id="apis">APIs</h2>
     <h3>Badge</h3>
-    <button onclick="increase()">navigator.setAppBadge()</button>
+    <pre class="minWidth"><code>navigator.setAppBadge()</code></pre>
+
+    <button onclick="increase()">Badge-Nummer erhöhen</button>
 
     <section class="container">
         <h3>Notification</h3>
 
         <section class="container-fluid">
+            <pre class="minWidth"><code>Notification.requestPermission()</code></pre>
             <button onclick="requestNotificationPermission()">Berechtigung anfragen</button>
 
             <h4>Aus dem Client</h4>
-            <button onclick="showNotificationViaServiceWorker()">registration.showNotification</button>
+            <pre class="minWidth"><code>registration.showNotification()</code></pre>
+            <button onclick="showNotificationViaServiceWorker()">Benachrichtigung anzeigen</button>
 
             <h4>Push (von Server aus)</h4>
             <a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Tutorials/js13kGames/Re-engageable_Notifications_Push#push_example">
@@ -88,6 +130,15 @@
             </a>
         </section>
     </section>
+
+    <h3>Web Share API</h3>
+    <pre class="minWidth"><code>navigator.share()</code></pre>
+
+    <form id="shareForm" style="width: 20rem">
+        <label for="shareText">Text zum Teilen:</label>
+        <input type="text" id="shareText" name="shareText" placeholder="Gib etwas ein" required>
+        <button type="submit">Teilen</button>
+    </form>
 </section>
 
 </body>

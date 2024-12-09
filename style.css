@@ -19,3 +19,7 @@ h3 {
 h4 {
     margin-top: 1rem !important;
 }
+
+.minWidth {
+    width: min-content;
+}

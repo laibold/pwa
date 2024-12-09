@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progressive Web App</title>
+    <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+    <script src="script.js"></script>
+    <link rel="icon" href="/public/favicon.ico">
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const imageContainer = document.querySelector("#image-container");
+
+            if (window.launchQueue) {
+                window.launchQueue.setConsumer(async (launchParams) => {
+                    for (const file of launchParams.files) {
+                        const img = document.createElement("img");
+                        img.src = URL.createObjectURL(await file.getFile());
+                        imageContainer.appendChild(img);
+                    }
+                });
+            }
+        })
+    </script>
+</head>
+
+<body>
+
+<h1 class="container">Die Progressive Image App.</h1>
+
+<section class="container">
+    <div id="image-container"></div>
+</section>
+
+</body>
+</html>

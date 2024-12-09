@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progressive Web App</title>
+    <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+    <script src="script.js"></script>
+    <link rel="icon" href="/public/favicon.ico">
+
+    <script>
+        if (navigator.getBattery) {
+            navigator.getBattery().then((battery) => {
+                const updateBatteryStatus = () => {
+                    console.log(JSON.stringify(battery))
+                    document.getElementById('battery-status').innerHTML = `
+                        Battery Level: ${(battery.level * 100).toFixed(0)}%<br>
+                        Charging: ${battery.charging ? "Yes" : "No"}<br>
+                        Charging Time until 100 %: ${battery.chargingTime === Infinity ? "Not charging" : battery.chargingTime + " seconds"}<br>
+                        Discharging Time until 0 %: ${battery.dischargingTime === Infinity ? "N/A" : battery.dischargingTime + " seconds"}
+                    `;
+                }
+
+                // Update battery status when the battery properties change
+                battery.addEventListener('levelchange', updateBatteryStatus);
+                battery.addEventListener('chargingchange', updateBatteryStatus);
+                battery.addEventListener('chargingtimechange', updateBatteryStatus);
+                battery.addEventListener('dischargingtimechange', updateBatteryStatus);
+
+                // Initial update
+                updateBatteryStatus();
+            });
+        } else {
+            document.getElementById('battery-status').innerText = "Battery API not supported on this device.";
+        }
+    </script>
+</head>
+
+<body>
+
+<h1 class="container">Die Progressive Battery App.</h1>
+
+<section class="container">
+    <p id="battery-status">
+        Lade ...
+    </p>
+</section>
+
+</body>
+</html>

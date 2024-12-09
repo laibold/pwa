@@ -5,32 +5,21 @@ if ('serviceWorker' in navigator) {
 }
 
 /* BADGE */
-
-let badge = 0
-
+let badgeCounter = 0
 const increase = () => {
-    navigator.setAppBadge(++badge)
+    navigator.setAppBadge(++badgeCounter)
 }
 
 /* NOTIFICATION */
-
 const requestNotificationPermission = () => {
     Notification.requestPermission().then((result) => {
         if (result === "granted") {
-            randomNotification();
+            console.log("Benachrichtigungen erlaubt");
         }
     });
 }
 
-// funktioniert nur, wenn App offen ist und ist nicht auf Chrome Mobile implementiert
-const showNotification = () => {
-    const options = {
-        body: "Neue Benachrichtigung aus der PWA mit süßem Katzenbild",
-        icon: "https://placecats.com/200/200",
-    };
-    new Notification("Neue Benachrichtigung", options);
-}
-
+/* NOTIFICATION */
 const showNotificationViaServiceWorker = () => {
     const options = {
         body: "Neue Benachrichtigung aus der PWA mit süßem Katzenbild",
@@ -42,3 +31,28 @@ const showNotificationViaServiceWorker = () => {
         registration.showNotification("Benachrichtigung", options);
     })
 }
+
+/* SHARE */
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('shareForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const shareText = document.getElementById('shareText').value;
+
+        // Web Share API: Text teilen
+        if (navigator.share) {
+            const shareData = {
+                title: "Hallo, diese Nachricht könnte dich interessieren:",
+                text: shareText,
+            };
+
+            try {
+                await navigator.share(shareData);
+            } catch (err) {
+                alert(`Error: ${err}`)
+            }
+        } else {
+            alert('Die Web Share API wird von diesem Browser nicht unterstützt.');
+        }
+    });
+})
