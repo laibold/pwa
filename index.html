@@ -61,7 +61,7 @@
     <ul>
         <li>Manifest</li>
         <li>Service Worker
-            <pre class="minWidth"><code>navigator.serviceWorker.register('service-worker.js')</code></pre>
+            <div class="minWidth"><pre><code>navigator.serviceWorker.register('service-worker.js')</code></pre></div>
         </li>
     </ul>
 
@@ -72,7 +72,7 @@
 
 <section class="container">
     <h3>Manifest</h3>
-    <pre class="minWidth"><code>&lt;link rel="manifest" href="manifest.json"&gt;`</code></pre>
+    <div class="minWidth"><pre><code>&lt;link rel="manifest" href="manifest.json"&gt;</code></pre></div>
     <a href="manifest.json" target="_blank">Link</a>
 </section>
 
@@ -109,7 +109,7 @@
 <section class="container">
     <h2 id="apis">APIs</h2>
     <h3>Badge</h3>
-    <pre class="minWidth"><code>navigator.setAppBadge()</code></pre>
+    <div class="minWidth"><pre><code>navigator.setAppBadge()</code></pre></div>
 
     <button onclick="increase()">Badge-Nummer erhöhen</button>
 
@@ -117,11 +117,11 @@
         <h3>Notification</h3>
 
         <section class="container-fluid">
-            <pre class="minWidth"><code>Notification.requestPermission()</code></pre>
+            <div class="minWidth"><pre><code>Notification.requestPermission()</code></pre></div>
             <button onclick="requestNotificationPermission()">Berechtigung anfragen</button>
 
             <h4>Aus dem Client</h4>
-            <pre class="minWidth"><code>registration.showNotification()</code></pre>
+            <div class="minWidth"><pre><code>registration.showNotification()</code></pre></div>
             <button onclick="showNotificationViaServiceWorker()">Benachrichtigung anzeigen</button>
 
             <h4>Push (von Server aus)</h4>
@@ -132,7 +132,7 @@
     </section>
 
     <h3>Web Share API</h3>
-    <pre class="minWidth"><code>navigator.share()</code></pre>
+    <div class="minWidth"><pre><code>navigator.share()</code></pre></div>
 
     <form id="shareForm" style="width: 20rem">
         <label for="shareText">Text zum Teilen:</label>

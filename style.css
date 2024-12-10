@@ -20,6 +20,7 @@ h4 {
     margin-top: 1rem !important;
 }
 
-.minWidth {
-    width: min-content;
+pre {
+    overflow-x: scroll !important;
+    max-width: min-content;
 }
