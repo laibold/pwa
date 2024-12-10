@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pwa-cache-v2';
+const CACHE_NAME = 'pwa-cache-v3';
 const urlsToCache = [
     '/index.html',
     '/battery.html',
@@ -10,6 +10,7 @@ const urlsToCache = [
     '/public/icon-192x192.png',
     '/public/icon-512x512.png',
     '/public/shortcut-icon-96x96.png',
+    '/public/service-worker-principle.png',
 ];
 
 self.addEventListener('install', event => {
@@ -28,18 +29,24 @@ self.addEventListener('install', event => {
 // });
 
 /* NETWORK FIRST */
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', (event) => {
     event.respondWith(
         fetch(event.request)
-            .then(() => {
-                const clonedResponse = response.clone();
-                caches.open(CACHE_NAME)
-                    .then((cache) => cache.put(event.request, clonedResponse))
+            .then((response) => {
+                if (!response || response.status !== 200 || response.type !== 'basic') {
+                    return response;
+                }
 
-                return response;
+                const clonedResponse = response.clone();
+                caches.open(CACHE_NAME).then((cache) => {
+                    cache.put(event.request, clonedResponse);
+                });
+
+                return response; // Netzwerkantwort zurückgeben
             })
             .catch(() => {
-                return caches.match(event.request)
+                // Fallback: Antwort aus dem Cache liefern
+                return caches.match(event.request);
             })
     );
 });

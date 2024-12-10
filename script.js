@@ -1,4 +1,4 @@
-if ('serviceWorker' in navigator) {
+if (navigator.serviceWorker) {
     navigator.serviceWorker.register('service-worker.js')
         .then(() => console.log('Service Worker registered successfully.'))
         .catch(error => console.error('Service Worker registration failed:', error));
@@ -6,8 +6,12 @@ if ('serviceWorker' in navigator) {
 
 /* BADGE */
 let badgeCounter = 0
-const increase = () => {
-    navigator.setAppBadge(++badgeCounter)
+const increaseBadge = () => {
+    if (navigator.setAppBadge) {
+        navigator.setAppBadge(++badgeCounter)
+    } else {
+        alert('setAppBadge nicht unterstützt.')
+    }
 }
 
 /* NOTIFICATION */
@@ -16,13 +20,15 @@ const requestNotificationPermission = () => {
         if (result === "granted") {
             console.log("Benachrichtigungen erlaubt");
         }
-    });
+    }).catch((error) => {
+        console.error("Fehler beim Anfragen der Berechtigung", error);
+    })
 }
 
 /* NOTIFICATION */
 const showNotificationViaServiceWorker = () => {
     const options = {
-        body: "Neue Benachrichtigung aus der PWA mit süßem Katzenbild",
+        body: "Neue Benachrichtigung aus der PWA (evtl. mit süßem Katzenbild)",
         icon: "https://placecats.com/200/200",
         badge: "/public/icon-192x192.png"
     }
@@ -52,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert(`Error: ${err}`)
             }
         } else {
-            alert('Die Web Share API wird von diesem Browser nicht unterstützt.');
+            alert('Web Share API nicht unterstützt.');
         }
     });
 })

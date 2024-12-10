@@ -7,10 +7,7 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
-    <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-    >
+    <link rel="stylesheet" href="pico.min.css">
     <script src="script.js"></script>
     <link rel="icon" href="/public/favicon.ico">
 </head>
@@ -65,7 +62,9 @@
         </li>
     </ul>
 
-    <img src="https://www.thinktecture.com/storage/2020/03/service-worker-principle-768x439.png"/>
+    <img src="/public/service-worker-principle.png"/>
+
+    <pre><code>self.addEventListener('fetch', (event) => { ...</code></pre>
 </section>
 
 <hr/>
@@ -111,7 +110,7 @@
     <h3>Badge</h3>
     <pre><code>navigator.setAppBadge()</code></pre>
 
-    <button onclick="increase()">Badge-Nummer erhöhen</button>
+    <button onclick="increaseBadge()">Badge-Nummer erhöhen</button>
 
     <section class="container">
         <h3>Notification</h3>

@@ -15,30 +15,33 @@
     <link rel="icon" href="/public/favicon.ico">
 
     <script>
-        if ("getBattery" in navigator) {
-            navigator.getBattery().then((battery) => {
-                const updateBatteryStatus = () => {
-                    console.log(JSON.stringify(battery))
-                    document.getElementById('battery-status').innerHTML = `
+        document.addEventListener('DOMContentLoaded', () => {
+
+            if (navigator.getBattery) {
+                navigator.getBattery().then((battery) => {
+                    const updateBatteryStatus = () => {
+                        console.log(JSON.stringify(battery))
+                        document.getElementById('battery-status').innerHTML = `
                         Battery Level: ${(battery.level * 100).toFixed(0)}%<br>
                         Charging: ${battery.charging ? "Yes" : "No"}<br>
                         Charging Time until 100 %: ${battery.chargingTime === Infinity ? "Not charging" : battery.chargingTime + " seconds"}<br>
                         Discharging Time until 0 %: ${battery.dischargingTime === Infinity ? "N/A" : battery.dischargingTime + " seconds"}
                     `;
-                }
+                    }
 
-                // Update battery status when the battery properties change
-                battery.addEventListener('levelchange', updateBatteryStatus);
-                battery.addEventListener('chargingchange', updateBatteryStatus);
-                battery.addEventListener('chargingtimechange', updateBatteryStatus);
-                battery.addEventListener('dischargingtimechange', updateBatteryStatus);
+                    // Update battery status when the battery properties change
+                    battery.addEventListener('levelchange', updateBatteryStatus);
+                    battery.addEventListener('chargingchange', updateBatteryStatus);
+                    battery.addEventListener('chargingtimechange', updateBatteryStatus);
+                    battery.addEventListener('dischargingtimechange', updateBatteryStatus);
 
-                // Initial update
-                updateBatteryStatus();
-            });
-        } else {
-            document.getElementById('battery-status').innerHTML = "Battery API not supported on this device.";
-        }
+                    // Initial update
+                    updateBatteryStatus();
+                });
+            } else {
+                document.getElementById('battery-status').innerHTML = "Battery API not supported.";
+            }
+        })
     </script>
 </head>
 
