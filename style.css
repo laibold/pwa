@@ -21,6 +21,5 @@ h4 {
 }
 
 pre {
-    overflow-x: scroll !important;
     max-width: min-content;
 }

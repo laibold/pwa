@@ -5,7 +5,11 @@ const urlsToCache = [
     '/image.html',
     '/script.js',
     '/manifest.json',
-    'style.css'
+    '/style.css',
+    '/public/favicon.ico',
+    '/public/icon-192x192.png',
+    '/public/icon-512x512.png',
+    '/public/shortcut-icon-96x96.png',
 ];
 
 self.addEventListener('install', event => {
