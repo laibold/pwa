@@ -16,16 +16,9 @@
 
 <nav class="container-fluid" id="header-container">
     <ul>
-        <li><strong>Progressive Web App</strong></li>
-    </ul>
-    <ul>
-        <li><a href="#definition">Definition</a></li>
-        <li><a href="#fugu">Project Fugu</a></li>
-        <li><a href="#">Products</a></li>
+        <li><h1>Progressive Web Apps</h1></li>
     </ul>
 </nav>
-
-<h1 class="container">Die Progressive Web App.</h1>
 
 <section class="container">
     <h2 id="definition">Definition</h2>
@@ -59,12 +52,13 @@
         <li>Manifest</li>
         <li>Service Worker
             <pre><code>navigator.serviceWorker.register('service-worker.js')</code></pre>
+            <img src="/public/service-worker-principle.png"/>
+            <pre><code>self.addEventListener('fetch', (event) => { ...</code></pre>
         </li>
+        <li>Icons</li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps" target="_blank">"kann sich in das Gerät und andere installierte Apps integrieren."</a></li>
     </ul>
 
-    <img src="/public/service-worker-principle.png"/>
-
-    <pre><code>self.addEventListener('fetch', (event) => { ...</code></pre>
 </section>
 
 <hr/>
@@ -80,8 +74,9 @@
 <section class="container">
     <h2 id="fugu">Project Fugu 🐡</h2>
     <p>
-        Auch Web Capabilities Project genannt: Teil des Chromium-Projekts, mit dem Lücken zwischen nativen Anwendungen und
-        Webanwendungen geschlossen werden soll. Zu den aktuellen Teilnehmern gehören u.a. Google, Microsoft, Intel, Samsung.
+        Auch Web Capabilities Project genannt: Teil des Chromium-Projekts, mit dem Ziel, Lücken zwischen nativen Anwendungen
+        und Webanwendungen zu schließen. Zu den aktuellen Teilnehmern gehören u.a. Google, Microsoft, Intel,
+        Samsung.
     </p>
     <h3>Umgesetzte APIs</h3>
     <ul>

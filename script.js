@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 await navigator.share(shareData);
             } catch (err) {
-                alert(`Error: ${err}`)
+                console.log(`Error: ${err}`)
             }
         } else {
             alert('Web Share API nicht unterstützt.');
